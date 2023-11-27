@@ -16,6 +16,9 @@ def run_house_app():
     st.text('')
     st.text('')
     st.text('')
+    st.text('')
+    st.text('')
+    st.text('')
 
     st.subheader('우리나라 총 신혼부부 주택 소유 비중(%)')
 
@@ -37,6 +40,9 @@ def run_house_app():
 
 
 
+    st.text('')
+    st.text('')
+    st.text('')
     st.text('')
     st.text('')
     st.text('')
@@ -84,6 +90,9 @@ def run_house_app():
     st.text('')
     st.text('')
     st.text('')
+    st.text('')
+    st.text('')
+    st.text('')
 
     st.subheader('21년도 신혼부부 특성별 평균 소득 현황\n(주택소유 여부에 따른 소득 차이)')
 
@@ -93,6 +102,6 @@ def run_house_app():
 
 
     fig2 = px.pie(df4_2, values='소득 평균(만원)', names=['주택 미소유','주택 소유'])
-    fig2.update_traces(marker_colors =['#ecddfe','#ff5500'])
+    fig2.update_traces(marker_colors =['#ecddfe','#ff5500'], textfont_size=20)
 
     st.plotly_chart(fig2)

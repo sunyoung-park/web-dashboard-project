@@ -12,6 +12,8 @@ from plotly.subplots import make_subplots
 def run_work_app():
     st.title("'맞벌이' 신혼부부 비중")
 
+    st.subheader('연도별 우리나라 총 신혼부부 맞벌이 비중(%)')
+
     df5 = pd.read_csv('./data/newlywed_all.csv')
 
     fig = px.bar(df5, x='시점', y='맞벌이 비율 (B/A*100)', color='맞벌이 비율 (B/A*100)', color_continuous_scale='peach')
@@ -26,6 +28,7 @@ def run_work_app():
     st.text('')
 
     st.subheader('15~21년 신혼 부부의 맞벌이/외벌이 추이(%)')
+    colors3=px.colors.qualitative.T10
     df5['외벌이 비율 ((A-B)/A*100)']=(df5['신혼부부 수 (A)']-df5['맞벌이 부부 수 (B)'])/df5['신혼부부 수 (A)']*100
     df5['외벌이 비율 ((A-B)/A*100)'] =df5['외벌이 비율 ((A-B)/A*100)'].round(2)
 
@@ -33,6 +36,8 @@ def run_work_app():
     df5554 = df5[['시점','맞벌이 비율 (B/A*100)','외벌이 비율 ((A-B)/A*100)']]
 
     fig1 = px.line(df5554, x='시점', y=['맞벌이 비율 (B/A*100)','외벌이 비율 ((A-B)/A*100)'],markers=True)    
+
+    fig1.update_traces(line_width=2,marker_size=20)
     
     st.plotly_chart(fig1)
 
@@ -84,30 +89,31 @@ def run_work_app():
     st.text('')
     st.text('')
 
-    st.subheader('혼인연차별 첫째자녀 출산하는 부부 수/n (단위 : 쌍)')
+    st.subheader('맞벌이 비율과 첫자녀 출산 부부 혼인연도별 비교')
 
-    # fig = plt.figure(figsize=(8,6))
-    # fig.set_facecolor('white')
-    # ax1 = fig.add_subplot()
+    df7=pd.read_csv('./data/couple_baby.csv')
+    df7 =df7.rename(columns={'데이터':'첫자녀 출산 부부'})
+    df7
+    df6['첫자녀 출산 부부']=df7['첫자녀 출산 부부']
+    df6
 
-    # colors = sb.color_palette('summer',len(df6['신혼부부 특성별(2)']))
+    colors=px.colors.sequential.Peach
+    colors2=px.colors.sequential.Blugrn
+    fig11 = go.Figure()
 
-    # ax1.bar(df6['신혼부부 특성별(2)'], df6["맞벌이 비율"], color=colors, label='맞벌이 비율')
-    # plt.ylim(0,100)
-    # ax2 = ax1.twinx()
+    fig11 = make_subplots(specs=[[{"secondary_y": True}]])
 
-    # colors2='blue'
+    fig11.add_trace(go.Bar(x=df6['신혼부부 특성별(2)'],y=df6["맞벌이 비율"],name="맞벌이 비율",marker_color=colors),secondary_y=False)
+    fig11.add_trace(go.Scatter(x=df7['신혼부부 특성별(2)'],y=df7["첫자녀 출산 부부"],mode='lines+markers',
+        name="첫자녀 출산 부부수",marker_size=20,marker_line_color=colors2),secondary_y=True)
 
-    # ax2.plot(df7['신혼부부 특성별(2)'], df7["첫자녀 출산 부부"], color=colors2,marker='o', label='첫째자녀 출산부부 수')
-    # ax2.tick_params(axis='y', labelcolor=colors2)
+    fig11.update_layout(
+        xaxis_title='신혼부부 혼인연차별',
+        yaxis_title='맞벌이 비율',
+        yaxis2_title='첫자녀 출산 부부',
+    )
 
-
-    # plt.title('혼인연차별 우리나라 총 신혼부부 맞벌이 비중과\n첫째자녀 출산부부 수의 관계')
-    # plt.xlabel('혼인연차')
-    # plt.legend()
-    # plt.ylim(10000,250000)
-
-    # st.pyplot(fig2)
+    st.plotly_chart(fig11)
 
     
     

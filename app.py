@@ -1,8 +1,11 @@
 import streamlit as st
+from PIL import Image
+import matplotlib.pyplot as plt
 from app_home import run_home_app
 from app_char import run_char_app
 from app_house import run_house_app
 from app_work import run_work_app
+
 
 
 def main():
@@ -23,6 +26,11 @@ def main():
         font-family: 'KIMM_Bold';
         font_weight: 300;
         color : #ff5500;
+    }
+    h2{
+        font-family: 'KIMM_Bold';
+        color : #ff5500;
+    
     }
     body {
         background-color: #ffffff;
@@ -60,14 +68,21 @@ def main():
     .st-de {
         background-color: #ffffff;
     }
+    .st-dd {
+        background-color: #ffffff;
+    }
 </style>
 """
     st.markdown(css, unsafe_allow_html=True)
 
 
     menu = ['HOME','우리나라 신혼부부 특성별','신혼부부 주택 소유 비중','맞벌이 신혼부부 비중']
-
+    image = Image.open("./data/mc_img.png")
+    
+    st.sidebar.header("대한민국 신혼부부 통계자료 조사")
+    st.sidebar.header("-")
     choice = st.sidebar.selectbox('메뉴선택',menu)
+    st.sidebar.image(image)
 
     if choice == menu[0] :
         run_home_app()

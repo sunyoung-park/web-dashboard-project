@@ -15,6 +15,9 @@ def run_char_app():
     st.text('')
     st.text('')
     st.text('')
+    st.text('')
+    st.text('')
+    st.text('')
 
     st.subheader('(2015-2021)우리나라 전국 총 신혼부부(연도별)')
 
@@ -29,6 +32,9 @@ def run_char_app():
     st.text('')
     st.text('')
     st.text('')
+    st.text('')
+    st.text('')
+    st.text('')
 
     st.subheader('(2015-2021)우리나라 전국 총 신혼부부 수(시도별)')
 
@@ -39,6 +45,9 @@ def run_char_app():
 
     st.plotly_chart(fig1)
 
+    st.text('')
+    st.text('')
+    st.text('')
     st.text('')
     st.text('')
     st.text('')
@@ -71,7 +80,7 @@ def run_char_app():
         selected_char2 = st.selectbox('맞벌이 여부를 선택하세요.', selected_work)
     elif selected_char1 == '출산자녀수별':        
         selected_baby=df2.loc[df2['신혼부부 특성별(1)']=='출산자녀수별','신혼부부 특성별(2)'].unique()
-        selected_char2 = st.selectbox('출산자녀수를 선택하세요.', selected_baby)
+        selected_char2 = st.selectbox('자녀유무를 선택하세요.', selected_baby)
 
     else:        
         selected_house=df2.loc[df2['신혼부부 특성별(1)']=='주택소유물건수별','신혼부부 특성별(2)'].unique()
@@ -83,19 +92,9 @@ def run_char_app():
 
     st.subheader('해당 특성의 신혼부부의 평균소득은 ')
     st.title( str(df2_result_final)+ '만원 입니다.')
-
-
-
     
 
-    st.subheader(df2.loc[(df2[selected_year] == df2[selected_year])
-                         &(df2[selected_char1] == df2[selected_char1])
-                         &(df2[selected_char2] == df2[selected_char2]),'소득 평균(만원)']
-                         .values[0])
+    # st.subheader(df2.loc[(df2['시점'] == selected_year)&(df2['신혼부부 특성별(1)'] == selected_char1)&(df2['신혼부부 특성별(2)'] == selected_char2),'소득 평균(만원)'].values[0])
     
 
-    st.dataframe(df2)
 
-def new_func(df2_result):
-    new_var = df2_result
-    return new_var
