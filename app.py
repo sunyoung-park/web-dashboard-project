@@ -32,7 +32,7 @@ def main():
     font-style: normal;
 }
     *{    
-        font-family: 'KIMM_Thin';
+        font-family: 'KIMM_Bold';
         font_weight: 300;
         color : #ff5500;
     }
@@ -58,7 +58,7 @@ def main():
         background-color: #ecddfe;
     }
     .st-emotion-cache-183lzff{
-        font-family: 'KIMM_Thin';
+        font-family: 'KIMM_Bold';
         font-size: 16px;
     }
     .custom-button {
