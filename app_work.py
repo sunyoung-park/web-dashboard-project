@@ -157,13 +157,18 @@ def run_work_app():
     st.subheader('가사분담에 대한 견해와 실태 비교')
 
     # 서브플롯을 만들어 두 개의 파이 차트를 나란히 결합
-    fig4 = sp.make_subplots(rows=1, cols=2, subplot_titles=['견해', '실태'],specs=[[{"type": "pie"}, {"type": "pie"}]])
+    fig4 = sp.make_subplots(rows=1, cols=2, subplot_titles=['견해', '실태'],specs=[[{"type": "pie"}, {"type": "pie"}]],
+    shared_yaxes=True, # 특정 축을 공유하게 그래프를 그릴 수 있음
+    horizontal_spacing=0.05, # 너비 간격을 설정할 수 있음
+    column_widths=[0.5, 0.5])
 
     fig4.add_trace(fig2.data[0], row=1, col=1)
     fig4.add_trace(fig3.data[0], row=1, col=2)
 
     # 레이아웃 및 사이즈 조정
-    fig4.update_layout(height=650, width=1000)
+    fig4.update_layout(height=650, width=1000, margin_l=70)
+    fig4.update_traces(textfont_size=20)
+    fig4.update_annotations(font=dict(family="Helvetica", size=20))
 
 # 스트림릿에 플롯 출력
     st.plotly_chart(fig4)
