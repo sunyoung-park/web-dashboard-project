@@ -14,21 +14,9 @@ def main():
     @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 
     @font-face {
-     font-family: 'S-CoreDream-3Light';
-     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-     font-weight: normal;
-     font-style: normal;
-}
-    @font-face {
     font-family: 'KIMM_Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
     font-weight: 700;
-    font-style: normal;
-}
-    @font-face {
-    font-family: 'KIMM_Thin';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 300;
     font-style: normal;
 }
     *{    
@@ -68,6 +56,9 @@ def main():
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
+    }
+    .st-de {
+        background-color: #ffffff;
     }
 </style>
 """
