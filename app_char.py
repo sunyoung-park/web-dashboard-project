@@ -19,7 +19,7 @@ def run_char_app():
     st.text('')
     st.text('')
 
-    st.subheader('(2015-2021)우리나라 전국 총 신혼부부(연도별)')
+    st.subheader('✤ (15-21년)우리나라 전국 총 신혼부부(연도별)')
 
     df01 = df.loc[df['행정구역별'] == '전국',['시점','신혼부부 수 (A)']]
 
@@ -36,7 +36,7 @@ def run_char_app():
     st.text('')
     st.text('')
 
-    st.subheader('(2015-2021)우리나라 전국 총 신혼부부 수(시도별)')
+    st.subheader('✤ (15-21년)우리나라 전국 총 신혼부부 수(시도별)')
 
     df02 = df[['시점','행정구역별','신혼부부 수 (A)']]
     df02 = df02.drop(df02[df02['행정구역별'] == '전국'].index,axis=0)
@@ -52,7 +52,7 @@ def run_char_app():
     st.text('')
     st.text('')
 
-    st.subheader('신혼부부 특성별 평균소득 현황')
+    st.subheader('✤ 신혼부부 특성별 평균소득 현황')
 
     df2 = pd.read_csv('./data/newlywed_couple_ income_status.csv')
     df2 = df2.rename(columns={'데이터':'소득 평균(만원)'})

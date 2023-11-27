@@ -12,7 +12,7 @@ from plotly.subplots import make_subplots
 def run_work_app():
     st.title("'맞벌이' 신혼부부 비중")
 
-    st.subheader('연도별 우리나라 총 신혼부부 맞벌이 비중(%)')
+    st.subheader('✤ 연도별 우리나라 총 신혼부부 맞벌이 비중(%)')
 
     df5 = pd.read_csv('./data/newlywed_all.csv')
 
@@ -27,7 +27,7 @@ def run_work_app():
     st.text('')
     st.text('')
 
-    st.subheader('15~21년 신혼 부부의 맞벌이/외벌이 추이(%)')
+    st.subheader('✤ (15-21년) 신혼 부부의 맞벌이/외벌이 추이(%)')
     colors3=px.colors.qualitative.T10
     df5['외벌이 비율 ((A-B)/A*100)']=(df5['신혼부부 수 (A)']-df5['맞벌이 부부 수 (B)'])/df5['신혼부부 수 (A)']*100
     df5['외벌이 비율 ((A-B)/A*100)'] =df5['외벌이 비율 ((A-B)/A*100)'].round(2)
@@ -50,7 +50,7 @@ def run_work_app():
     st.text('')
     st.text('')
 
-    st.subheader('21년 n년차 부부 맞벌이 비중(%)')
+    st.subheader('✤ 21년 n년차 부부 맞벌이 비중(%)')
 
     df6 = pd.read_csv('./data/couple_work.csv')
     
@@ -89,7 +89,7 @@ def run_work_app():
     st.text('')
     st.text('')
 
-    st.subheader('맞벌이 비율과 첫자녀 출산 부부 혼인연도별 비교')
+    st.subheader('✤ 맞벌이 비율과 첫자녀 출산 부부 혼인연도별 비교')
 
     df7=pd.read_csv('./data/couple_baby.csv')
     df7 =df7.rename(columns={'데이터':'첫자녀 출산 부부'})
@@ -128,7 +128,7 @@ def run_work_app():
     st.title('.')
     st.title('.')
 
-    st.subheader('가사분담에 대한 견해')
+    st.subheader('✤ 가사분담에 대한 견해')
 
     df8=pd.read_csv('./data/homework.csv')
 
@@ -145,7 +145,7 @@ def run_work_app():
     st.text('')
     st.text('')
     st.text('')
-    st.subheader('실제 가사 분담은 어떻게 이루어지고 있는지?')
+    st.subheader('✤ 실제 가사 분담은 어떻게 이루어지고 있는지?')
 
     df9=pd.read_csv('./data/homework_real.csv')
 
@@ -160,6 +160,7 @@ def run_work_app():
     st.text('')
     st.text('')
     st.text('')
+    st.subheader('✤ ✤ ')
     st.subheader('가사분담에 대한 견해와 실태 비교')
 
     # 서브플롯을 만들어 두 개의 파이 차트를 나란히 결합

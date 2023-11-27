@@ -71,6 +71,9 @@ def main():
     .st-dd {
         background-color: #ffffff;
     }
+    .st-df {
+        background-color: #ffffff;
+    }
 </style>
 """
     st.markdown(css, unsafe_allow_html=True)
@@ -79,9 +82,8 @@ def main():
     menu = ['HOME','우리나라 신혼부부 특성별','신혼부부 주택 소유 비중','맞벌이 신혼부부 비중']
     image = Image.open("./data/mc_img.png")
     
-    st.sidebar.header("대한민국 신혼부부 통계자료 조사")
-    st.sidebar.header("-")
-    choice = st.sidebar.selectbox('메뉴선택',menu)
+    st.sidebar.header("대한민국 신혼부부 통계자료 조사 ✤")
+    choice = st.sidebar.selectbox('menu',menu)
     st.sidebar.image(image)
 
     if choice == menu[0] :

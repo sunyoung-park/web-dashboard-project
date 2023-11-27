@@ -20,7 +20,7 @@ def run_house_app():
     st.text('')
     st.text('')
 
-    st.subheader('우리나라 총 신혼부부 주택 소유 비중(%)')
+    st.subheader('✤ 우리나라 총 신혼부부 주택 소유 비중(%)')
 
     df3 = pd.read_csv('./data/house_newlyweds.csv')
 
@@ -47,7 +47,7 @@ def run_house_app():
     st.text('')
     st.text('')
 
-    st.write('15년도와 21년도 신혼부부 주택 소유 비중 비교(%)')
+    st.subheader('✤ 15년도와 21년도 신혼부부 주택 소유 비중 비교(%)')
 
     df34 = df3.loc[(df3['시점']==2021) & (df3['신혼부부 특성별(1)']=='혼인연차별'),['신혼부부 특성별(2)','주택 보유율']]
     df34['주택 보유율']=df34['주택 보유율'].round(2)
@@ -94,7 +94,7 @@ def run_house_app():
     st.text('')
     st.text('')
 
-    st.subheader('21년도 신혼부부 특성별 평균 소득 현황\n(주택소유 여부에 따른 소득 차이)')
+    st.subheader('✤ 21년도 신혼부부 주택소유별 평균 소득 비중 현황\n(주택소유 여부에 따른 소득 차이)')
 
     df4 = pd.read_csv('./data/newlywed_house_salary.csv')
     df4_2 = df4.loc[(df4['시점']==2021),["신혼부부 특성별(2)","데이터"]]
