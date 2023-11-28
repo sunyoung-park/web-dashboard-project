@@ -21,4 +21,7 @@ def run_home_app():
     st.text('▶ 혼인관계 유지')
     st.text('▶ 부부 중 1명 이상 국내에 거주')
     
+    st.text(' ')
+    st.text('출처 : https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1NW1001&conn_path=I2')
+    st.text('통계청,「신혼부부통계」, 2021, 2023.11.28, 시도별 신혼부부 총괄')
     
