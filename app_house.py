@@ -34,6 +34,10 @@ def run_house_app():
 
     fig = px.bar(df30, x='시점', y='주택 보유율', color='주택 보유율', color_continuous_scale='peach', text_auto=True)
     fig.update_yaxes(range=[40, 45])
+    fig.update_layout(margin_l=100
+                       ,margin_r=70)
+
+
     st.plotly_chart(fig)
 
 
@@ -79,7 +83,9 @@ def run_house_app():
                 align='center'  # 중앙 정렬
     )
         
-    fig1.update_layout(barmode='group')
+    fig1.update_layout(barmode='group'
+                       ,margin_l=70
+                       ,margin_r=70)
 
     fig1.update_yaxes(range=[30, 55])
     st.plotly_chart(fig1)
@@ -94,17 +100,11 @@ def run_house_app():
     st.text('')
     st.text('')
 
-    st.subheader('✤ 21년도 신혼부부 주택소유별 평균 소득 비중 현황\n(주택소유 여부에 따른 소득 차이)')
+    st.subheader('✤ (15-21년) 신혼부부 주택소유별 평균 소득 현황\n(주택소유 여부에 따른 소득 차이)')
 
     df4 = pd.read_csv('./data/newlywed_house_salary.csv')    
     df4=df4.rename(columns={'신혼부부 특성별(2)':'주택 소유 여부','데이터':'소득 평균(만원)'})
     df4_2 = df4.loc[(df4['시점']==2021),["주택 소유 여부","소득 평균(만원)"]]
-
-
-    fig2 = px.pie(df4_2, values='소득 평균(만원)', names=['주택 미소유','주택 소유'])
-    fig2.update_traces(marker_colors =['#ecddfe','#ff5500'], textfont_size=20)
-
-    st.plotly_chart(fig2)
 
 
     col1, col2 = st.columns(2)
@@ -123,14 +123,29 @@ def run_house_app():
     with col2:
         fig3 = go.Figure(data =[
         go.Bar(name = '미주택', x=df4.loc[df4['시점']==options1,'시점'],
-        y=df4.loc[(df4['주택 소유 여부']=='주택 미소유')&(df4['시점']==options1),'소득 평균(만원)'], marker_color='#6ee274'),
+        y=df4.loc[(df4['주택 소유 여부']=='주택 미소유')&(df4['시점']==options1),'소득 평균(만원)'], marker_color='#ecddfe'),
         go.Bar(name = '유주택', x=df4.loc[df4['시점']==options1,'시점'],
-        y=df4.loc[(df4['주택 소유 여부']=='주택 소유')&(df4['시점']==options1),'소득 평균(만원)'], marker_color='#fca4a1')
+        y=df4.loc[(df4['주택 소유 여부']=='주택 소유')&(df4['시점']==options1),'소득 평균(만원)'], marker_color='#ff5500')
       
         ])
         fig3.update_layout(barmode='group'
-                           ,width=340)
+                            ,width=340
+                            ,margin_l=70
+                            ,margin_r=70)
 
-        fig3.update_yaxes(range=[3000, 8000])
+        fig3.update_yaxes(range=[3000, 7500])
+
+        for i, bar in enumerate(fig3.data):
+            for j, val in enumerate(bar.y):
+                fig3.add_annotation(
+                    x=bar.x[j],
+                    y=val,
+                    text=str(val),
+                    showarrow=False,
+                    font=dict(color='black', size=14),  # 레이블 폰트 스타일 설정
+                    xshift=0,  # x축으로 이동
+                    yshift=8,  # y축으로 이동
+                   align='center'  # 중앙 정렬
+    )
 
         st.plotly_chart(fig3)

@@ -24,7 +24,11 @@ def run_char_app():
     df01 = df.loc[df['행정구역별'] == '전국',['시점','신혼부부 수 (A)']]
 
     fig = px.bar(df01, x='시점', y='신혼부부 수 (A)',
-             text_auto=False, color = '신혼부부 수 (A)', color_continuous_scale='peach')
+             text_auto=False, color = '신혼부부 수 (A)', color_continuous_scale='peach',
+             labels=dict(시점="연도"))
+    
+    fig.update_layout(margin_l=100
+                     ,margin_r=70)
     st.plotly_chart(fig)
 
 
@@ -41,7 +45,12 @@ def run_char_app():
     df02 = df[['시점','행정구역별','신혼부부 수 (A)']]
     df02 = df02.drop(df02[df02['행정구역별'] == '전국'].index,axis=0)
 
-    fig1 = px.line(df02, x='시점', y='신혼부부 수 (A)', color='행정구역별',markers=True)
+    fig1 = px.line(df02, x='시점', y='신혼부부 수 (A)', color='행정구역별',markers=True,
+             labels=dict(시점="연도"))
+    
+    fig1.update_layout(margin_l=100
+                       ,margin_r=70)
+    fig1.update_traces(line_width=2,marker_size=10)
 
     st.plotly_chart(fig1)
 

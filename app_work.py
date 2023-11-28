@@ -16,8 +16,11 @@ def run_work_app():
 
     df5 = pd.read_csv('./data/newlywed_all.csv')
 
-    fig = px.bar(df5, x='시점', y='맞벌이 비율 (B/A*100)', color='맞벌이 비율 (B/A*100)', color_continuous_scale='peach')
+    fig = px.bar(df5, x='시점', y='맞벌이 비율 (B/A*100)', color='맞벌이 비율 (B/A*100)', color_continuous_scale='peach',labels=dict(시점="연도"))
     fig.update_yaxes(range=[35, 60])
+    
+    fig.update_layout(margin_l=100
+                       ,margin_r=70)
     st.plotly_chart(fig)
 
     st.text('')
@@ -32,12 +35,14 @@ def run_work_app():
     df5['외벌이 비율 ((A-B)/A*100)']=(df5['신혼부부 수 (A)']-df5['맞벌이 부부 수 (B)'])/df5['신혼부부 수 (A)']*100
     df5['외벌이 비율 ((A-B)/A*100)'] =df5['외벌이 비율 ((A-B)/A*100)'].round(2)
 
+    df5.rename(columns={'맞벌이 비율 (B/A*100)':'맞벌이 비율','외벌이 비율 ((A-B)/A*100)':'외벌이 비율'}, inplace = True)
+    df5554 = df5[['시점','맞벌이 비율','외벌이 비율']]
 
-    df5554 = df5[['시점','맞벌이 비율 (B/A*100)','외벌이 비율 ((A-B)/A*100)']]
-
-    fig1 = px.line(df5554, x='시점', y=['맞벌이 비율 (B/A*100)','외벌이 비율 ((A-B)/A*100)'],markers=True)    
+    fig1 = px.line(df5554, x='시점', y=['맞벌이 비율','외벌이 비율'],markers=True,labels=dict(시점="연도", value='비율'))    
 
     fig1.update_traces(line_width=2,marker_size=20)
+    fig1.update_layout(margin_l=100
+                       ,margin_r=70)
     
     st.plotly_chart(fig1)
 
@@ -108,9 +113,11 @@ def run_work_app():
         name="첫자녀 출산 부부수",marker_size=20,marker_line_color=colors2),secondary_y=True)
 
     fig11.update_layout(
-        xaxis_title='신혼부부 혼인연차별',
+        xaxis_title='혼인연차별',
         yaxis_title='맞벌이 비율',
         yaxis2_title='첫자녀 출산 부부',
+        margin_l=100,
+        margin_r=70
     )
 
     st.plotly_chart(fig11)
@@ -133,7 +140,8 @@ def run_work_app():
     df8=pd.read_csv('./data/homework.csv')
 
     fig2 = px.pie(df8, values='2022', names=['남편이 전적으로 책임','남편이 주로 하고 아내도 분담','공평하게 분담','아내가 주로 하고 남편도 분담','아내가 전적으로 책임'])
-    fig2.update_traces(marker_colors =px.colors.qualitative.Set3)
+    fig2.update_traces(marker_colors =px.colors.qualitative.Set3)    
+    fig2.update_annotations(font=dict(family="Helvetica", size=20))
 
     
     st.plotly_chart(fig2)
@@ -151,6 +159,7 @@ def run_work_app():
 
     fig3 = px.pie(df9, values='2022', names=['남편이 전적으로 책임','남편이 주로 하고 아내도 분담','공평하게 분담','아내가 주로 하고 남편도 분담','아내가 전적으로 책임'])
     fig3.update_traces(marker_colors =px.colors.qualitative.Set3)
+    fig3.update_annotations(font=dict(family="Helvetica", size=20))
 
     
     st.plotly_chart(fig3)
