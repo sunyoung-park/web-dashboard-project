@@ -10,7 +10,6 @@ from app_work import run_work_app
 
 def main():
     
-
     css = """
     <style>
     /* 여기에 CSS 코드를 추가합니다 */
@@ -73,6 +72,9 @@ def main():
     }
     .st-df {
         background-color: #ffffff;
+    }
+    .st-e7 {
+    background-color: #ecddfe;
     }
 </style>
 """

@@ -1,8 +1,8 @@
 import streamlit as st
 
 def run_home_app():
+    st.balloons()
     st.write('Republic of Korea Ministry of Defense statistical survey')
-    st.title('대한민국 신혼부부 통계자료 조사')
     st.title('대한민국 신혼부부 통계자료 조사')
     
     st.text('')

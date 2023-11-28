@@ -96,12 +96,41 @@ def run_house_app():
 
     st.subheader('✤ 21년도 신혼부부 주택소유별 평균 소득 비중 현황\n(주택소유 여부에 따른 소득 차이)')
 
-    df4 = pd.read_csv('./data/newlywed_house_salary.csv')
-    df4_2 = df4.loc[(df4['시점']==2021),["신혼부부 특성별(2)","데이터"]]
-    df4_2=df4_2.rename(columns={'신혼부부 특성별(2)':'주택 소유 여부','데이터':'소득 평균(만원)'})
+    df4 = pd.read_csv('./data/newlywed_house_salary.csv')    
+    df4=df4.rename(columns={'신혼부부 특성별(2)':'주택 소유 여부','데이터':'소득 평균(만원)'})
+    df4_2 = df4.loc[(df4['시점']==2021),["주택 소유 여부","소득 평균(만원)"]]
 
 
     fig2 = px.pie(df4_2, values='소득 평균(만원)', names=['주택 미소유','주택 소유'])
     fig2.update_traces(marker_colors =['#ecddfe','#ff5500'], textfont_size=20)
 
     st.plotly_chart(fig2)
+
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        options1 = st.selectbox('연도를 선택하세요', df4['시점'].unique()) 
+
+        opt_result=df4.loc[(df4['시점']==options1),"소득 평균(만원)"]
+
+        st.subheader('-')
+        st.subheader('미주택자 소득 평균')
+        st.title(str(opt_result.values[0])+'만원')
+        st.subheader('유주택자 소득 평균')
+        st.title(str(opt_result.values[1])+'만원')
+
+    with col2:
+        fig3 = go.Figure(data =[
+        go.Bar(name = '미주택', x=df4.loc[df4['시점']==options1,'시점'],
+        y=df4.loc[(df4['주택 소유 여부']=='주택 미소유')&(df4['시점']==options1),'소득 평균(만원)'], marker_color='#6ee274'),
+        go.Bar(name = '유주택', x=df4.loc[df4['시점']==options1,'시점'],
+        y=df4.loc[(df4['주택 소유 여부']=='주택 소유')&(df4['시점']==options1),'소득 평균(만원)'], marker_color='#fca4a1')
+      
+        ])
+        fig3.update_layout(barmode='group'
+                           ,width=340)
+
+        fig3.update_yaxes(range=[3000, 8000])
+
+        st.plotly_chart(fig3)
