@@ -15,7 +15,7 @@ def run_home_app():
     st.text('')
     st.text('')
     st.title('✤')
-    st.subheader('신혼부부통계 작성 대상')
+    st.subheader('통계청 신혼부부통계 작성 대상')
     st.text('▶ 매년 11월 1일 기준')
     st.text('▶ 혼인 신고한 지 5년 이내')
     st.text('▶ 혼인관계 유지')
