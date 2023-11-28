@@ -9,6 +9,11 @@ from app_work import run_work_app
 
 
 def main():
+
+    st.set_page_config(
+    page_title="신혼부부 통계자료 ✤",
+    page_icon="🎎"
+)
     
     css = """
     <style>
