@@ -3,7 +3,7 @@
     </div>
     <div style="text-align: left;"> 
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 웹 대시보드 프로젝트(신혼부부 통계) </h2>  <br>
-    <img src="https://github.com/sunyoung-park/web-dashboard-project/assets/51068439/156d242b-6b2d-4e41-997a-98e18c4e3fa8" />
+    <a href=http://ec2-15-164-220-88.ap-northeast-2.compute.amazonaws.com:8502/><img src="https://github.com/sunyoung-park/web-dashboard-project/assets/51068439/156d242b-6b2d-4e41-997a-98e18c4e3fa8" /></a>
     <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;"> <h3>📅 기간</h3><p>2023-11-23 ~ 2024-11-28 (총 6일)</p><br><h3>📢 목적</h3><p>대한민국 신혼부부 통계자료를 바탕으로 데이터 분석한 페이지입니다.</p><br><h3>📎 프로젝트 링크</h3><p>웹 대시보드 프로젝트 URL - http://ec2-15-164-220-88.ap-northeast-2.compute.amazonaws.com:8502/</p><br><h3>📌 작업순서</h3><p>데이터 주제 선정 > 데이터 가공(주피터노트북) > Streamlit 프레임워크 웹 대시보드 개발 > AWS EC2 배포</p><br><h3>📊 데이터 가공</h3><p>- Pandas read_csv로 csv 불러와 데이터 프레임 출력
 <br>- isna()메소드로 NaN 파악하여 dropna() 함수로 삭제
 <br>- loc 함수로 조건을 만족하는 해당 컬럼만 가져와 데이터 엑세스
